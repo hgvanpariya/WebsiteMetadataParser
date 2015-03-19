@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="websitemetainfo.ui.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="websitemetainfo.ui.Perspective"
+            id="WebsiteMetainfo.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="WebsiteMetainfo"
+            name="Parse Wbsite Category">
+      </category>
+      <view
+            category="WebsiteMetainfo"
+            class="websitemetainfo.views.ParseWebsiteView"
+            icon="icons/tab.png"
+            id="websitemetainfo.views.ParseWebsiteView"
+            name="Parse Website View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+X">
+      </key>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="WebsiteMetainfo.application"
+            description="This will get all Metadata from give URL"
+            name="Website Metainfo Fetcher">
+         <property
+               name="aboutText"
+               value="Website Metadata product is created By Hari">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/google_web_elements.png">
+         </property>
+         <property
+               name="appName"
+               value="Website Metainfo Fetcher">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="websitemetainfo.views.ParseWebsiteView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>
